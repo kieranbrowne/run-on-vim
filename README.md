@@ -31,6 +31,7 @@ Because Run On is composable it works with all the vim motions you know and love
 - `ro5e` will run a given command on next five words.
 - `roi"` will run a given command on anything inside quotation marks.
 - `rof.` will run a given command on everything up to and including the next full stop.
+
 etc.
 
 

@@ -1,8 +1,8 @@
 nnoremap ro :set operatorfunc=RunOn<cr>g@
-"vnoremap ro :<c-u>call RunOn(visualmode())<cr>
-vnoremap ro :call RunOn(visualmode())<cr>
+vnoremap ro :<c-u>call RunOn(visualmode())<cr>
+"vnoremap ro :call RunOn(visualmode())<cr>
 
-function! RunOn(text)
+function! RunOn(text, ...)
     let saved_unnamed_register = @@
 
     if a:text ==# 'v'
@@ -13,7 +13,7 @@ function! RunOn(text)
         return
     endif
 
-    let cmd = PromptCmd()
+    let cmd = a:0 >= 1 ? a:1 : PromptCmd()
     silent execute "r! " . cmd ." ". shellescape(@@)
 
     let @@ = saved_unnamed_register
@@ -25,3 +25,4 @@ function! PromptCmd()
     call inputrestore()
     return cmd
 endfunction
+
