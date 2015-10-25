@@ -5,10 +5,10 @@ vnoremap ro :<c-u>call RunOn(visualmode())<cr>
 function! RunOn(text, ...)
     let saved_unnamed_register = @@
 
-    if a:text ==# 'v'
+    if a:text ==# visualmode()
         execute "normal! `<v`>d"
     elseif a:text ==# 'char'
-        execute "normal! `[v`]d"
+        execute "normal! '[v']d"
     else
         return
     endif
